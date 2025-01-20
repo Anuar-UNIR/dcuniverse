@@ -4,6 +4,7 @@ import com.example.dcuniverse.model.Characters;
 import com.example.dcuniverse.repository.CharacterRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.Optional;
 public class CharacterService {
     @Autowired
     CharacterRepository characterRepository;
-    public List<Characters> findAll() {
-        return characterRepository.findAll();
+    public List<Characters> findAll(PageRequest pageable) {
+        return characterRepository.findAll(pageable).getContent();
     }
 
     public Characters save(Characters character) {
@@ -27,8 +28,8 @@ public class CharacterService {
         return characterRepository.findById(id);
     }
 
-    public List<Characters> findByHeronameContains(String heroname) {
-        return characterRepository.findByHeronameContains(heroname);
+    public List<Characters> findByHeronameContains(String heroname, PageRequest pageable) {
+        return characterRepository.findByHeronameContains(heroname, pageable);
     }
 
     public List<Characters> findByAlignment(String alignment) {
@@ -40,8 +41,8 @@ public class CharacterService {
     }
 
 
-    public List<Characters> findByPowerGreaterThan (Double value) {
-        return characterRepository.findByPowerstats_PowerGreaterThan(value);
+    public List<Characters> findByPowerGreaterThan (Double value, PageRequest pageable) {
+        return characterRepository.findByPowerstats_PowerGreaterThan(value, pageable);
     }
 
 }

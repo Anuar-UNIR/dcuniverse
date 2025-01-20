@@ -6,6 +6,7 @@ import com.example.dcuniverse.service.CharacterService;
 import com.example.dcuniverse.service.PowerStatsService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,9 +24,12 @@ public class DCUniverseController {
 
 
     @GetMapping(value = "/characters")
-    public ResponseEntity<List<Characters>> getCharacters() {
+    public ResponseEntity<List<Characters>> getCharacters(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "100") int size
+    ) {
         log.debug("A request has arrived to get all characters");
-        return ResponseEntity.ok(characterService.findAll());
+        return ResponseEntity.ok(characterService.findAll(PageRequest.of(page, size)));
     }
 
     @PostMapping("/characters")
@@ -55,9 +59,11 @@ public class DCUniverseController {
     }
 
     @GetMapping(value = "/characters/name/{heroName}")
-    public ResponseEntity<List<Characters>> getCharacterById(@PathVariable String heroName) {
+    public ResponseEntity<List<Characters>> getCharacterById(@PathVariable String heroName,
+                                                             @RequestParam(defaultValue = "0") int page,
+                                                             @RequestParam(defaultValue = "100") int size) {
         log.debug("A request has arrived to get character by heroName: {} ", heroName);
-        List<Characters> charactersList = characterService.findByHeronameContains(heroName);
+        List<Characters> charactersList = characterService.findByHeronameContains(heroName, PageRequest.of(page, size));
 
         // Verificar si el personaje está presente
         if (!charactersList.isEmpty()) {
@@ -76,16 +82,19 @@ public class DCUniverseController {
     }
 
     @GetMapping("/powerstats/power/{value}")
-    public List<Powerstats> getPowerGreaterThan(@PathVariable("value") Double value) {
+    public ResponseEntity<List<Powerstats>> getPowerGreaterThan(@PathVariable("value") Double value,
+                                                                @RequestParam(defaultValue = "0") int page,
+                                                                @RequestParam(defaultValue = "100") int size) {
         log.info("A request has been received to get power greater than value {}", value);
-        return powerStatsService.findByPowerGreaterThan(value);
+        return ResponseEntity.ok(powerStatsService.findByPowerGreaterThan(value, PageRequest.of(page, size)));
     }
 
     @GetMapping("/characters/power/{value}")
-    public List<Characters> getCharactersPowerGreaterThan(@PathVariable("value") Double value) {
+    public ResponseEntity<List<Characters>> getCharactersPowerGreaterThan(@PathVariable("value") Double value,
+                                                                          @RequestParam(defaultValue = "0") int page,
+                                                                          @RequestParam(defaultValue = "100") int size) {
         log.info("A request has been received to get characters with power greater than value {}", value);
-        return characterService.findByPowerGreaterThan(value);
+        return ResponseEntity.ok(characterService.findByPowerGreaterThan(value,PageRequest.of(page, size)));
     }
-
 
 }

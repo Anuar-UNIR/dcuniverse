@@ -15,14 +15,18 @@ import java.util.Optional;
 public class CharacterService {
     @Autowired
     CharacterRepository characterRepository;
+
     public List<Characters> findAll(PageRequest pageable) {
         return characterRepository.findAll(pageable).getContent();
+    }
+
+    public int getSize() {
+        return characterRepository.findAll().size();
     }
 
     public Characters save(Characters character) {
         return characterRepository.save(character);
     }
-
 
     public Optional<Characters> findById(Long id) {
         return characterRepository.findById(id);
@@ -40,8 +44,7 @@ public class CharacterService {
         characterRepository.deleteById(id);
     }
 
-
-    public List<Characters> findByPowerGreaterThan (Double value, PageRequest pageable) {
+    public List<Characters> findByPowerGreaterThan(Double value, PageRequest pageable) {
         return characterRepository.findByPowerstats_PowerGreaterThan(value, pageable);
     }
 

@@ -22,12 +22,10 @@ public class DCUniverseController {
     CharacterService characterService;
     PowerStatsService powerStatsService;
 
-
     @GetMapping(value = "/characters")
     public ResponseEntity<List<Characters>> getCharacters(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "100") int size
-    ) {
+            @RequestParam(defaultValue = "100") int size) {
         log.debug("A request has arrived to get all characters");
         return ResponseEntity.ok(characterService.findAll(PageRequest.of(page, size)));
     }
@@ -60,8 +58,8 @@ public class DCUniverseController {
 
     @GetMapping(value = "/characters/name/{heroName}")
     public ResponseEntity<List<Characters>> getCharacterById(@PathVariable String heroName,
-                                                             @RequestParam(defaultValue = "0") int page,
-                                                             @RequestParam(defaultValue = "100") int size) {
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "100") int size) {
         log.debug("A request has arrived to get character by heroName: {} ", heroName);
         List<Characters> charactersList = characterService.findByHeronameContains(heroName, PageRequest.of(page, size));
 
@@ -83,18 +81,24 @@ public class DCUniverseController {
 
     @GetMapping("/powerstats/power/{value}")
     public ResponseEntity<List<Powerstats>> getPowerGreaterThan(@PathVariable("value") Double value,
-                                                                @RequestParam(defaultValue = "0") int page,
-                                                                @RequestParam(defaultValue = "100") int size) {
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "100") int size) {
         log.info("A request has been received to get power greater than value {}", value);
         return ResponseEntity.ok(powerStatsService.findByPowerGreaterThan(value, PageRequest.of(page, size)));
     }
 
     @GetMapping("/characters/power/{value}")
     public ResponseEntity<List<Characters>> getCharactersPowerGreaterThan(@PathVariable("value") Double value,
-                                                                          @RequestParam(defaultValue = "0") int page,
-                                                                          @RequestParam(defaultValue = "100") int size) {
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "100") int size) {
         log.info("A request has been received to get characters with power greater than value {}", value);
-        return ResponseEntity.ok(characterService.findByPowerGreaterThan(value,PageRequest.of(page, size)));
+        return ResponseEntity.ok(characterService.findByPowerGreaterThan(value, PageRequest.of(page, size)));
+    }
+
+    @GetMapping("/characters/total")
+    public ResponseEntity<Integer> getTotalCharacters() {
+        log.info("A request has been received to get characters with power greater than value {}");
+        return ResponseEntity.ok(characterService.getSize());
     }
 
 }

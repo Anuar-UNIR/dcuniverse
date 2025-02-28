@@ -1,0 +1,11 @@
+<form #searchForm="ngForm" class="mb-3" (ngSubmit)="getHeroSearch(searchForm)">
+    <div class="d-flex gap-2 align-items-center">
+        <label for="select" class="form-label mb-0"><img src="/ordenar.png" alt=""></label>
+        <select name="order" id="order" (change)="getHeroSearch(searchForm)" class="form-select-sm" ngModel>
+            <option disabled value="">Seleciona un orden</option>
+            <option value="A-Z">A-Z</option>
+            <option value="Z-A">Z-A</option>
+        </select> 
+        <!-- <input type="submit" value="Aceptar" class="btn btn.sm btnAceptar"> -->
+    </div>
+</form>

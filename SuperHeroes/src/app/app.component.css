@@ -1,0 +1,31 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    flex: 0 0 auto;
+    background-color: #f8f9fa;
+    padding: 10px;
+    z-index: 1;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+footer {
+    flex: 0 0 auto;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+}

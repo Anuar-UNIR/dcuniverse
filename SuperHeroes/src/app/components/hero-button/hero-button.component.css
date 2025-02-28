@@ -1,0 +1,21 @@
+.btn{
+    font-size: smaller;
+    background-color: transparent !important;
+    color: black;
+}
+.btnDetalle:hover{
+    background-color: lightgray !important;
+    font-weight: 700;
+}
+.btnActualizar:hover{
+    background-color: lightgoldenrodyellow !important;
+    font-weight: 700;
+}
+.btnBorrar:hover{
+    background-color: lightcoral !important;
+    font-weight: 700;
+}
+img{
+    width: 30px;
+    height: 30px;
+}

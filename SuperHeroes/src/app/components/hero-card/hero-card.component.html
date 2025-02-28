@@ -1,0 +1,17 @@
+<div class="card mb-3">
+    <div class="g-0 d-flex flex-column align-items-center justify-content-center">
+        <div class="card-img-container text-center">
+            <img [src]="miHero.image1" class="card-img-top img-fluid rounded"  [alt]="miHero.heroname">
+        </div>
+        <div class="w-100">
+            <div class="card-body text-center">
+                <h4 class="card-title"><strong>{{miHero.heroname}}</strong></h4>
+                <h5 class="card-title">{{miHero.fullname}}</h5>
+                <!-- <p class="card-text">{{miUser.last_name}}</p>
+                <p class="card-text">{{miUser.username}}</p>
+                <p class="card-text">{{miUser.email}}</p> -->
+                <app-hero-button [parent]="'card'" [miId]="miHero.id"></app-hero-button>
+            </div>
+        </div>
+    </div>
+</div>

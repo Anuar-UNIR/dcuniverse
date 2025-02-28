@@ -1,0 +1,27 @@
+<div class="container">
+    <app-hero-itemperpage (itemsPerPageSelected)="getItemsPerPageSelected($event)"></app-hero-itemperpage>
+    <app-hero-orderby (orderSelected)="orderHeroBy($event)"></app-hero-orderby>
+    <app-hero-search (heroSearched)="getHeroSearched($event)"></app-hero-search>
+    <app-power-filter (heroSearched)="getHeroSearchedByPower($event)"></app-power-filter>
+</div>
+<div class="album py-5">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+            @for (hero of heroList | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: total }; track $index) {
+            <div class="col">
+                <app-hero-card [miHero]="hero"></app-hero-card>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- @if (!todosFlag) { -->
+<div class="d-flex justify-content-center">
+    <pagination-controls
+    class="pagination"
+        (pageChange)="onPageChange($event)"
+        previousLabel="Anterior"
+        nextLabel="Siguiente">
+    </pagination-controls>
+</div>
+<!-- } -->

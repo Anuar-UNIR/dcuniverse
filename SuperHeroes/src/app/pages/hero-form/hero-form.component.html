@@ -1,0 +1,137 @@
+<section>
+    <h3>{{tipo}} Heroe</h3>
+    <hr>
+    <form class="card shadow p-4" [formGroup]="heroForm" (ngSubmit)="getDataForm()">
+        <div class="mt-3">
+            <label for="heroname" class="form-label">Nombre de SuperHeroe</label>
+            <input type="text" id="heroname" class="form-control" formControlName="heroname">
+            @if(checkControl('heroname','required')){
+                <p class="error">Campo requerido</p>
+            }
+            @if(checkControl('heroname','minlength')){
+                <p class="error">Debe de tener al menos tres caracteres</p>
+            }
+        </div>
+
+        <div class="mt-3">
+            <label for="fullname" class="form-label">Nombre Real</label>
+            <input type="text" id="fullname" class="form-control" formControlName="fullname">
+            @if(checkControl('fullname','required')){
+                <p class="error">Campo requerido</p>
+            }
+            @if(checkControl('fullname','minlength')){
+                <p class="error">Debe de tener al menos tres caracteres</p>
+            }
+        </div>
+
+        <div class="mt-3">
+            <label for="image1" class="form-label">Imagen 1</label>
+            <input type="text" id="image1" class="form-control" formControlName="image1">
+            @if(checkControl('image1','required')){
+                <p class="error">Campo requerido</p>
+            }
+            @if(checkControl('image1','pattern')){
+                <p class="error">Debe de tener el formato correcto</p>
+            }
+        </div>
+        <div class="mt-3">
+            <label for="image2" class="form-label">Imagen 2</label>
+            <input type="text" id="image2" class="form-control" formControlName="image2">
+            @if(checkControl('image2','required')){
+                <p class="error">Campo requerido</p>
+            }
+            @if(checkControl('image2','pattern')){
+                <p class="error">Debe de tener el formato correcto</p>
+            }
+        </div>
+        <div class="mt-3">
+            <label for="image3" class="form-label">Imagen 3</label>
+            <input type="text" id="image3" class="form-control" formControlName="image3">
+            @if(checkControl('image3','required')){
+                <p class="error">Campo requerido</p>
+            }
+            @if(checkControl('image3','pattern')){
+                <p class="error">Debe de tener el formato correcto</p>
+            }
+        </div>
+        <div class="mt-3">
+            <label for="gender" class="form-label">Sexo</label>
+            <input type="text" id="gender" class="form-control" formControlName="gender">
+            @if(checkControl('gender','required')){
+                <p class="error">Campo requerido</p>
+            }
+            @if(checkControl('gender','minlength')){
+                <p class="error">Debe de tener al menos tres caracteres</p>
+            }
+        </div>
+        <div class="mt-3">
+            <label for="race" class="form-label">Raza</label>
+            <input type="text" id="race" class="form-control" formControlName="race">
+            @if(checkControl('race','required')){
+                <p class="error">Campo requerido</p>
+            }
+            @if(checkControl('race','minlength')){
+                <p class="error">Debe de tener al menos tres caracteres</p>
+            }
+        </div>
+        <div class="my-2">
+            <label for="alignment" class="form-label mt-3">Afiliacion</label>
+            <select class="form-select" id="alignment" formControlName="alignment">
+                <option value="" disabled selected>Seleccione una afiliación</option>
+                <option value="good">Good</option>
+                <option value="bad">Bad</option>
+            </select>
+            @if(checkControl('alignment','required')){
+            <p class="error">Campo requerido</p>
+            }
+        </div>
+        <div class="mt-3">
+            <label for="intelligence" class="form-label">Inteligencia</label>
+            <input type="number" id="intelligence" class="form-control" formControlName="intelligence">
+            @if(checkControl('intelligence','required')){
+                <p class="error">Campo requerido</p>
+            }
+        </div>
+        <div class="mt-3">
+            <label for="strength" class="form-label">Fuerza</label>
+            <input type="number" id="strength" class="form-control" formControlName="strength">
+            @if(checkControl('strength','required')){
+                <p class="error">Campo requerido</p>
+            }
+        </div>
+        <div class="mt-3">
+            <label for="speed" class="form-label">Velocidad</label>
+            <input type="number" id="speed" class="form-control" formControlName="speed">
+            @if(checkControl('speed','required')){
+                <p class="error">Campo requerido</p>
+            }
+        </div>
+        <div class="mt-3">
+            <label for="durability" class="form-label">Durabilidad</label>
+            <input type="number" id="durability" class="form-control" formControlName="durability">
+            @if(checkControl('durability','required')){
+                <p class="error">Campo requerido</p>
+            }
+        </div>
+        <div class="mt-3">
+            <label for="power" class="form-label">Poder</label>
+            <input type="number" id="power" class="form-control" formControlName="power">
+            @if(checkControl('power','required')){
+                <p class="error">Campo requerido</p>
+            }
+        </div>
+        <div class="mt-3">
+            <label for="combat" class="form-label">Combate</label>
+            <input type="number" id="combat" class="form-control" formControlName="combat">
+            @if(checkControl('combat','required')){
+                <p class="error">Campo requerido</p>
+            }
+        </div>
+
+        <div class="d-flex gap-2 mt-4">
+            <input type="submit" value="Guardar" class="btn btn-danger" [disabled]="!heroForm.valid">
+            <a [routerLink]="['/users']" class="btn btn-warning">Volver</a>
+        </div>      
+
+    </form>
+</section>

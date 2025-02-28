@@ -1,0 +1,17 @@
+img{
+    width: 30em;
+}
+@media (max-width: 850px) {
+    .forMedia{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .textoCont{
+        width: 100vh;
+    }
+    .barProgress{
+        width: 90%;
+    }
+}

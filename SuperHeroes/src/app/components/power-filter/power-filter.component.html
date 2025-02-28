@@ -1,0 +1,8 @@
+<form #searchForm="ngForm" class="mb-3" (ngSubmit)="getHeroSearch(searchForm)">
+    <div class="d-flex gap-2 align-items-center">
+        <label for="input" class="form-label mb-0"><img src="/lupa.png" alt="">Introduzca el minimo de poder</label>
+        <input id="input" name="input" type="number" (input)="getHeroSearch(searchForm)" class="form-control-md" [(ngModel)]="searchInput">
+        
+        <!-- <input type="submit" value="Aceptar" class="btn btn.sm btnAceptar"> -->
+    </div>
+</form>

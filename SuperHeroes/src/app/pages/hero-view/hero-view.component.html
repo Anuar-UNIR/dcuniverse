@@ -1,0 +1,77 @@
+<section class="container-fluid mt-3">
+    <div class="shadow p-3 containerRow">
+        <div class="d-flex forMedia">
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img [src]="miHero.image1" class="d-block img-fluid" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img [src]="miHero.image2" class="d-block img-fluid" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img [src]="miHero.image3" class="d-block img-fluid" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="textoCont col-6 col-md-6 d-flex flex-column justify-content-center ps-5">
+                <h2>{{miHero.heroname}}</h2>
+                <br>
+                <h3>{{miHero.fullname}}</h3>
+                <br>
+                <p><strong>Alignment:</strong> {{miHero.alignment}}</p>
+                <p><strong>Sexo:</strong> {{miHero.gender}}</p>
+                <p><strong>Race:</strong> {{miHero.race}}</p>
+                <h5><strong>POWER STATS</strong></h5>
+                <!-- <ul>
+                    <li>Poder: {{miHero.powerstats.power}}</li>
+                    <li>Velocidad: {{miHero.powerstats.speed}}</li>
+                    <li>Fuerza: {{miHero.powerstats.strength}}</li>
+                    <li>Inteligencia: {{miHero.powerstats.intelligence}}</li>
+                    <li>Durabilidad: {{miHero.powerstats.durability}}</li>
+                    <li>Combate: {{miHero.powerstats.combat}}</li>
+                </ul> -->
+                <div class="barProgress d-flex flex-column gap-2 w-80">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [style.width]="miHero.powerstats.power + '%'" aria-valuenow="0"
+                            aria-valuemin="0" aria-valuemax="100">Poder: {{miHero.powerstats.power}}%</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [style.width]="miHero.powerstats.speed + '%'" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">Velocidad: {{miHero.powerstats.speed}}%</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [style.width]="miHero.powerstats.strength + '%'" aria-valuenow="50"
+                            aria-valuemin="0" aria-valuemax="100">Poder: {{miHero.powerstats.strength}}%</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [style.width]="miHero.powerstats.intelligence + '%'" aria-valuenow="75"
+                            aria-valuemin="0" aria-valuemax="100">Inteligencia: {{miHero.powerstats.intelligence}}%</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [style.width]="miHero.powerstats.durability + '%'" aria-valuenow="100"
+                            aria-valuemin="0" aria-valuemax="100">Dureza: {{miHero.powerstats.durability}}%</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [style.width]="miHero.powerstats.combat + '%'" aria-valuenow="100"
+                            aria-valuemin="0" aria-valuemax="100">Dureza: {{miHero.powerstats.combat}}%</div>
+                    </div>
+                </div>
+                <br>
+                 <app-hero-button [parent]="'view'" [miId]="miHero.id"></app-hero-button>
+            </div>
+        </div>
+        <!-- <a [routerLink]="['/users', miUser._id]" class="btn btnNext"><img class="imgNext" src="/adelante.png" alt=""><br></a>
+        <a [routerLink]="['/users', miUser._id]" class="btn btnBef"><img class="imgBef" src="/anterior.png" alt=""><br></a> -->
+    </div>
+</section>
